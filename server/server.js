@@ -1,12 +1,15 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-const PORT = 3000;
 const apiRouter = require("./routes/api.js");
+const databaseRouter = require("./routes/database.js");
+const PORT = 3000;
+// const cors = require("cors")
 
 app.use(express.urlencoded({ extended: true }));
-
 app.use(express.json());
+
+app.use("/database", databaseRouter);
 
 app.use("/build", express.static(path.join(__dirname, "../build")));
 
