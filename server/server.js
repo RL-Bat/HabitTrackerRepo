@@ -1,23 +1,24 @@
 const express = require("express");
-const path = require("path");
+const path = require('path');
 const app = express();
+const databaseRouter = require('./routes/database.js');
 const PORT = 3000; 
-const cors = require("cors")
+// const cors = require("cors")
 
 app.use(express.urlencoded({extended: true}));
-
-app.use(cors());
 app.use(express.json());
 
+app.use('/database', databaseRouter);
 
-app.use("/build", express.static(path.join(__dirname, "../build")));
+app.use('/build', express.static(path.join(__dirname, '../build')));
 
 
 app.get('/', (req,res)=> {
-    return res.status(200).sendFile(path.join(__dirname, "../client/index.html"));
+    return res.status(200).sendFile(path.join(__dirname, '../client/index.html'));
 });
 
 app.listen(PORT, ()=> {
     console.log(`The server is on on port ${PORT}. It's listening...`); 
 });
 
+module.exports = app;
