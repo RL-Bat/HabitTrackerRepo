@@ -1,0 +1,73 @@
+
+* {
+  background: whitesmoke;
+}
+#pikachu {
+  height: 100px;
+  width: 100px;
+}
+
+#time {
+  font-size: 19px;
+}
+#username{
+  font-size: 19px;
+}
+
+#habbitheader{
+font-size: 50px;
+}
+
+.userprofile {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border: darkblue;
+}
+
+.profile {
+  display: flex;
+  flex-direction: row-reverse;
+  justify-content: flex-end;
+}
+
+button {
+  text-align: center;
+  position: absolute;
+  top: 30%;
+  left: 42%;
+  zoom: 1.5;
+}
+
+button:hover {
+  cursor: pointer;
+}
+
+.modal {
+  z-index: 1;
+  width: 150%;
+  height: 150%;
+  background-color: rgba(0, 0, 0, 0.25);
+}
+
+.modal_content {
+  background-color: white;
+  position: absolute;
+  top: 20%;
+  left: 30%;
+  width: 40%;
+  padding: 20px;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+
+.close {
+  color: Black;
+  float: right;
+}
+
+.close:hover {
+  color: cyan;
+  cursor: pointer;
+}
