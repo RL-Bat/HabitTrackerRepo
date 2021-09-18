@@ -3,6 +3,7 @@ const path = require('path');
 const app = express();
 const databaseRouter = require('./routes/database.js');
 const PORT = 3000; 
+// const cors = require("cors")
 
 app.use(express.urlencoded({extended: true}));
 app.use(express.json());

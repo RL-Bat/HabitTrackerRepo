@@ -23,10 +23,8 @@ module.exports = {
             }
         },
         {
-            test : /\.s[ac]ss$/i,
-            use: [
-                "style-loader", "css-loader"
-            ]
+            test: /\.css$/i,
+            use: ["style-loader", "css-loader"],
         }
     ]
   },
@@ -35,7 +33,7 @@ module.exports = {
       directory: path.join(__dirname, '/client'),
     },
     compress: true,
-    port: 8000,
+    port: 8080,
     proxy: {
       '/api': 'http://localhost:3000',
     },
