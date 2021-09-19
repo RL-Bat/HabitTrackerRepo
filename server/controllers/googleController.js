@@ -1,18 +1,32 @@
 const express = require("express");
 const router = express.Router();
-const { Storage } = require("@google-cloud/storage");
-const { google } = require("googleapis");
-const gaxios = require("gaxios");
-const axios = require("axios");
-const people = google.people("v1");
-const jwt = require("jsonwebtoken");
-require("dotenv").config();
 
+//file dependancies
+//docs for google api library:
+//https://github.com/googleapis/google-api-nodejs-client#oauth2-client
+const { google } = require("googleapis");
+const queryString = require("query-string");
+
+//mongoose sheema
+const User = require("../models/habitModels");
+
+//required for decoding web tokens to object format & creating cookies
+const jwt = require("jsonwebtoken");
+
+//needed to create a secret for cookie on each login
+const randomString = require("random-string");
+
+//You must create a .env file to store client ID, Client secret, and Redirect Uri follow .env file example
+
+//go to https://developers.google.com/adwords/api/docs/guides/authentication to find out how to create client id and client secret
+
+//required for reading .env file
+require("dotenv").config();
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
 
-//oauth client parameters
+//from googleapi docs
 const oauth2Client = new google.auth.OAuth2(
   CLIENT_ID,
   CLIENT_SECRET,
@@ -37,30 +51,73 @@ googleController.login = (req, res) => {
     scope: scopes,
     response_type: "code",
   });
-
   return res.redirect(url);
 };
 
-googleController.createTokens = async (req, res, next) => {
+//function used to check if new user needs to be create
+async function checkUser(currentUser) {
+  try {
+    //check if user is currently in database
+    let user = await User.HabitsData.find({ userId: currentUser.user_id });
+    //if user is an empty array, user was not found so create new user and return user id
+    if (Array.isArray(user) && user.length === 0) {
+      //create new User query string out of passed in object
+      const newUserQuery = `http://localhost:3000/database/addUser?${queryString.stringify(
+        currentUser
+      )}`;
+      return newUserQuery;
+    } else {
+      //if user does exist return a query string with users id
+      const oldUserQuery = `http://localhost:3000/database/?${queryString.stringify(
+        currentUser.user_id
+      )}`;
+      return oldUserQuery;
+    }
+  } catch (err) {
+    return err;
+  }
+}
+
+googleController.getCredentials = async (req, res, next) => {
   try {
     //deconstruct query params for code
     const { code } = req.query;
     //get tokens using access code
     const { tokens } = await oauth2Client.getToken(code);
-    console.log(tokens);
     //set credentials property on oauth2client object to recieved credential tokens
     oauth2Client.setCredentials(tokens);
-    console.log(oauth2Client);
-
     try {
+      //decode JS web token and create an object
       const decoded = jwt.decode(oauth2Client.credentials.id_token, {
         complete: true,
       });
-      console.log(decoded);
+
+      //pull all pieces of data from decoded JWT  - sub is unique google id
+      const { sub, email, name, picture } = decoded.payload;
+      //user obj with all values needed to create query param in createUser function
+      const userObj = {
+        user_id: sub,
+        email,
+        name,
+        picture,
+      };
+      //create correct user query string to send to frontend for database request
+      const databaseQuery = await checkUser(userObj);
+
+      //create cookie for each new user session
+      const secret = randomString({ length: 40 });
+
+      // //create response cookie on login
+      // res.cookie("token", token, { httpOnly: true });
+      //redirect to databaseQuery string so front end can display data
+      res.locals.redirectUrl = databaseQuery;
+      next();
     } catch (err) {}
   } catch (err) {
-    console.log(err);
-    next();
+    next({
+      log: `error in googleController.getCredentials: ERROR = ${err}`,
+      message: { err: "error occured in habitController.getCredentials" },
+    });
   }
 };
 
