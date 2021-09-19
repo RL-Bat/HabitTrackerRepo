@@ -15,6 +15,8 @@ class UserProfile extends Component {
   }
   //=======Gets user data after login page, wg
   // componentDidMount(){
+  //   
+  //   UrlSearchParams
   //   const url = 'userdata'
   //   fetch(url)
   //   .then(res => res.json())
@@ -26,9 +28,13 @@ class UserProfile extends Component {
   render() {
     return (
       <div>
-        <p id={"username"}>{this.state.user}</p>
-        <img id={"pikachu"} src={this.state.profilePic} alt='User profile picture'/>
-      </div> 
+        <div id={"username"}>
+          {this.state.user}
+          </div>
+        <div>
+          <img id={"pikachu"} src={this.state.profilePic} alt='User profile picture'/>
+        </div> 
+      </div>
     )
   }
 }
