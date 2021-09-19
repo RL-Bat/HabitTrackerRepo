@@ -1,15 +1,30 @@
 import React from "react";
 import { render } from "react-dom";
 import { Provider } from "react-redux";
-import axios from 'axios';
 import App from "./App.jsx"
-import ReactDOM from 'react-dom';
-import { createStore } from 'redux';
-//import STORE
+import store from './store.js'
 
-const store = {};
 
 render(
-   <App />,
+  <Provider store={store}>
+    <App />
+  </Provider>,
   document.getElementById('root')
 );
+
+
+// import React from 'react'
+// import ReactDOM from 'react-dom'
+// import { Provider } from 'react-redux'
+
+// import { App } from './App'
+// import createStore from './createReduxStore'
+
+// const store = createStore()
+
+// ReactDOM.render(
+//   <Provider store={store}>
+//     <App />
+//   </Provider>,
+//   document.getElementById('root')
+// )
