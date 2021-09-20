@@ -12,7 +12,9 @@ router.get("/callback", googleController.getCredentials, (req, res) => {
   if (res.locals.redirectUrl) {
     res.redirect(res.locals.redirectUrl);
   } else {
-    res.sendStatus(404);
+    res
+      .sendStatus(404)
+      .statusMessage("There was an error with the request. Please try again.");
   }
 });
 
