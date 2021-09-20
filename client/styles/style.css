@@ -1,27 +1,35 @@
-
 /* * {
   background: whitesmoke;
 } */
-.habitCardsContainer{
+.habitCardsContainer {
   padding: 1rem 3rem;
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
   justify-content: space-evenly;
   /* grid-template-columns: repeat(4, 1fr); */
-  
 }
-.habitCard{
+.habitCard {
   padding: 1rem 3rem;
   border: 1px solid orange;
   background-color: whitesmoke;
   width: 150px;
   height: 200px;
-
+}
+.h3 {
+  display: flex;
+  align-items: center;
+  font-size: large;
+  justify-content: center;
 }
 
-#habbitheader{
-font-size: 50px;
+.addBtn {
+  display: flex;
+  align-items: center;
+}
+
+#habbitheader {
+  font-size: 50px;
 }
 
 .userprofile {
@@ -29,7 +37,7 @@ font-size: 50px;
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  border: 2px solid pink
+  border: 2px solid pink;
 }
 
 .profile {
@@ -37,21 +45,23 @@ font-size: 50px;
   flex-direction: row;
   justify-content: flex-end;
   border: 2px solid black;
+  padding: 5px;
 }
 
 /* .profile { */
-  /* display: grid;  */
-  /* align-items: center; */
-  /* grid-template-columns: .5fr 1fr 1fr .5fr; 
+/* display: grid;  */
+/* align-items: center; */
+/* grid-template-columns: .5fr 1fr 1fr .5fr; 
   grid-gap: 5px;
   /* grid-template-rows: 1fr;  */
-  /* border: 2px solid green 
+/* border: 2px solid green 
 } */
 
-#username{
-display: flex;
-align-items: center;
-border: 2px solid black 
+#username {
+  display: flex;
+  align-items: center;
+  border: 2px solid black;
+  padding: 5px;
 }
 
 /* #username {
@@ -125,14 +135,14 @@ border: 2px solid black
   cursor: pointer;
 }
 
-
 #habitcontainer {
-  border: 2px solid darkblue;
-  background-color: lightblue;
+  border: 2px solid rgb(119, 119, 231);
+  background-color: rgb(205, 226, 233);
   width: 75%;
+  align-items: center;
 }
 
 #quotefoot {
+  padding: 5px;
   border: 2px solid red;
 }
-

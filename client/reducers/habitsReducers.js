@@ -1,6 +1,7 @@
 import * as types from '../constants/actionTypes.js';
 
 const initialState = {
+  user_id: 0,
   habitId: 100,
   newHabit: '',
   habitType: 'positive',
@@ -8,7 +9,7 @@ const initialState = {
   habitList: [],
 };
 
-const habitsReducer = (state=initialState, action) => {
+const habitsReducer = (state = initialState, action) => {
   let habitList;
 
   switch (action.type) {
@@ -20,8 +21,8 @@ const habitsReducer = (state=initialState, action) => {
         habit: state.newHabit,
         type: state.habitType,
         totalAmountsWanted: state.totalAmountsWanted,
-        total: 0
-      }
+        total: 0,
+      };
 
       habitList = state.habitList.slice();
       habitList.push(newHabit);
@@ -29,46 +30,64 @@ const habitsReducer = (state=initialState, action) => {
         ...state,
         habitId,
         habitList,
-        newHabit: '',  
+        newHabit: '',
         habitType: '',
-        totalAmountsWanted: 0      
+        totalAmountsWanted: 0,
       };
-    
+
+    case types.DELETE_HABIT:
+      console.log('delete!');
+      const habitToDelete = action.payload;
+      console.log(action.payload);
+      habitList = state.habitList.slice();
+      for (let i = 0; i < habitList.length; i++) {
+        if (habitList[i].habitId === habitToDelete) {
+          habitList.splice(i, 1);
+          console.log(habitList);
+          return {
+            ...state,
+            habitList,
+          };
+        }
+      }
+
     case types.SET_NEW_HABIT:
-      return {...state, newHabit: action.payload};
-      
+      return { ...state, newHabit: action.payload };
+
     case types.SET_HABIT_TYPE:
-      return {...state, habitType: action.payload};  
+      return { ...state, habitType: action.payload };
 
     case types.SET_TOTAL_AMOUNTS_WANTED:
-      console.log(action.payload)
-      return {...state, totalAmountsWanted: action.payload};
-     
+      return { ...state, totalAmountsWanted: action.payload };
+
     case types.ADD_TOTAL:
-      console.log(action.payload)
-        const habitIdToAdd = action.payload;
-        habitList = state.habitList.slice();
-        for(let i = 0; i < habitList.length; i++) {
-          if(habitList[i].habitId === habitIdToAdd){
-            habitList[i].total += 1;
-            return {...state, habitList}
-          }
+      const habitIdToAdd = action.payload;
+      habitList = state.habitList.slice();
+      for (let i = 0; i < habitList.length; i++) {
+        if (habitList[i].habitId === habitIdToAdd) {
+          habitList[i].total += 1;
+          return { ...state, habitList };
         }
+      }
     case types.DELETE_TOTAL:
-      console.log(action.payload)
       const habitIdToDelete = action.payload;
       habitList = state.habitList.slice();
-      for(let i = 0; i < habitList.length; i++) {
-        if(habitList[i].habitId === habitIdToDelete){
+      for (let i = 0; i < habitList.length; i++) {
+        if (habitList[i].habitId === habitIdToDelete) {
           habitList[i].total = 0;
-          return {...state, habitList}
+          return { ...state, habitList };
         }
-      }  
+      }
+
+    case types.UPDATE_LIST:
+      const userList = action.payload;
+      habitList = userList;
+      return { ...state, habitList };
+
     default: {
       return state;
-    }  
-  } 
-}
-
+    }
+  }
+};
 
 export default habitsReducer;

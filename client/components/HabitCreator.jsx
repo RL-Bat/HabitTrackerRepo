@@ -1,5 +1,7 @@
 import React from 'react';
 
+
+// React hook that will populate the contents of a popup
 const HabitCreator = props => {
 
   const { addHabit, setNewHabit, setHabitType, setTotalAmountsWanted, togglePopup} = props;

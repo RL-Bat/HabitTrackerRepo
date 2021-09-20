@@ -3,11 +3,12 @@ import Habit from './Habit.jsx'
 import axios from 'axios';
 import toServer from '../functions/functions.js';
 
+
 const HabitsDisplay = (props) => {
-  const { habitList, addTotal, deleteTotal} = props;
+  const { habitList, addTotal, deleteTotal, deleteHabit } = props;
   const habitCards = [];
   for (let i = 0; i < habitList.length; i++) {
-    habitCards.push(<Habit key={i} habitInfo={habitList[i]} addTotal={addTotal} deleteTotal={deleteTotal}/>)
+    habitCards.push(<Habit key={i} habitInfo={habitList[i]} addTotal={addTotal} deleteTotal={deleteTotal} deleteHabit={deleteHabit}/>)
   }
   /*
   useEffect(() => {
@@ -23,5 +24,6 @@ const HabitsDisplay = (props) => {
     </div>
   )
 };
+
 
 export default HabitsDisplay;
