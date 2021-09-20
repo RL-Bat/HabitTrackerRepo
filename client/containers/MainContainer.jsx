@@ -6,6 +6,17 @@ import UserProfile from  '../components/UserProfile.jsx'
 import '../styles/style.css';
 import Newquote from '../components/motivation.jsx';
 import HabitsContainer from '../containers/HabitsContainer.jsx'
+import * as actions from '../actions/actions.js';
+
+
+//redux mapStateToProps here
+const mapStateToProps = state => ({
+  habitList: state.habits.habitList
+});
+
+const mapDispatchToProps = dispatch => ({
+  updateHabitList: (update) => dispatch(actions.updateListActionCreator(update))
+});
 
 class MainContainer extends Component {
   constructor(props) {
@@ -13,18 +24,19 @@ class MainContainer extends Component {
   }
 
   render() {
+  
     return(
       <div className="userprofile">
         <h1 id="habbitheader">Habbit Tracker</h1>
         <header className='profile'>
-          <UserProfile />
+          <UserProfile updateHabitList={this.props.updateHabitList}/>
           <TimeClock />
         </header>
         <div>
           
         </div>
         <main id="habitcontainer">
-          <HabitsContainer />
+          <HabitsContainer habitList={this.props.habitList}/>
         </main>
         <footer id="quotefoot">
           <Newquote />
@@ -38,7 +50,7 @@ class MainContainer extends Component {
 
 {/* Motivation Quote */}
 
-export default MainContainer;
+export default connect(mapStateToProps, mapDispatchToProps)(MainContainer);
 
 
 

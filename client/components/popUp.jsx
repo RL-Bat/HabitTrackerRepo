@@ -6,7 +6,9 @@ const mapDispatchToProps = dispatch => ({
   addHabit: () => dispatch(actions.addHabitActionCreator()),
   setNewHabit: (e) => dispatch(actions.setNewHabitActionCreator(e.target.value))
 });
-
+//At the moment this entire page is not being called or used, we are simply keeping it 
+// increase we need to use it later on for another popup, variables can be later changed
+// and made to be dynamic for whatever the need is 
 const PopUp = props => {
 
 

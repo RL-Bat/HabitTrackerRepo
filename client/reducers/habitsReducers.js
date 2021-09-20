@@ -78,6 +78,12 @@ const habitsReducer = (state = initialState, action) => {
           return { ...state, habitList };
         }
       }
+
+    case types.UPDATE_LIST:
+      const userList = action.payload;
+      habitList = userList;
+      return { ...state, habitList };
+
     default: {
       return state;
     }

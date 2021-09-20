@@ -35,3 +35,8 @@ export const deleteTotalActionCreator = (habitId) => ({
   type: types.DELETE_TOTAL,
   payload: habitId,
 });
+
+export const updateListActionCreator = (update) => ({
+  type: types.UPDATE_LIST,
+  payload: update,
+})

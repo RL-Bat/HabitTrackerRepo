@@ -3,28 +3,28 @@ import { render } from 'react-dom';
 import axios from 'axios';
 
 //this is a randomly generated quote pulled via a free API 
-
+// the 
 
 const Newquote = () => {
 
   const [error, setError] = useState(null);
-  const [items, setItems] = useState([]);
-  const [creator, setCreator] = useState([]);
+  const [quote, setQuote] = useState([]);
+  // const [creator, setCreator] = useState([]);
 
   useEffect(() => {
     axios.get('https://type.fit/api/quotes')
-    // .then(fullInformation => console.log(fullInformation.data[Math.floor(Math.random() * 1600)].author))
-    .then(passApiInfo => setItems(passApiInfo.data[Math.floor(Math.random() * 1600)].text),
-    // .then(passApiInfo => setCreator(passApiInfo.data[Math.floor(Math.random() * 1600)].author)),
+  .then(passedApiInfo => {
+  setQuote(passedApiInfo.data[Math.floor(Math.random() * 1600)].text);
+  // setCreator(passedApiInfo.data.author); //wrong logic ATM dont have enough time to make this work
+  });
     (error) => {
       setError(error);
     }
-  )
-  }, [])
+  }, []);
 
     return(
   <div id='notaKanyeQuote'>
-    {items}
+    {quote} 
   </div>
     )  
 }

@@ -1,8 +1,8 @@
 const mongoose = require('mongoose');
 
 const MONGO_URI =
-  'mongodb+srv://ChaoY:Codesmith@cluster0.enckb.mongodb.net/habitApp?retryWrites=true&w=majority';
-  
+  'mongodb+srv://moonluck:mishra@cluster0.enckb.mongodb.net/habitApp?retryWrites=true&w=majority';
+
 mongoose
   .connect(MONGO_URI, {
     useNewUrlParser: true,
@@ -28,7 +28,7 @@ const habitSchema = new Schema({
     {
       cardId: String,
       name: String,
-      positive: Boolean,
+      positive: String,
       totalAmountWanted: Number,
       runningTotal: Number,
     },

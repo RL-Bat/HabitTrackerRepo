@@ -9,7 +9,6 @@ router.get('/', googleController.login);
 //localhost:3000/login/callback
 //route to authenticate user credentials and sign user in
 router.get('/callback', googleController.getCredentials, (req, res) => {
-  console.log('yo');
   console.log(res.locals.redirectUrl);
   if (res.locals.redirectUrl) {
     res.redirect(res.locals.redirectUrl);

@@ -13,4 +13,6 @@ export const ADD_TOTAL = "ADD_TOTAL";
 
 export const DELETE_TOTAL = "DELETE_TOTAL";
 
+export const UPDATE_LIST = 'UPDATE_LIST';
+
 
