@@ -16,7 +16,7 @@ const habitsReducer = (state=initialState, action) => {
       const habitId = ++state.habitId;
       //Habit Card info
       const newHabit = {
-        newhabitId: habitId,
+        habitId: habitId,
         habit: state.newHabit,
         type: state.habitType,
         totalAmountsWanted: state.totalAmountsWanted,

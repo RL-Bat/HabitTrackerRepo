@@ -14,16 +14,9 @@ class UserProfile extends Component {
     }
   }
   //=======Gets user data after login page, wg
-  // componentDidMount(){
-  //   
-  //   UrlSearchParams
-  //   const url = 'userdata'
-  //   fetch(url)
-  //   .then(res => res.json())
-  //   .then(res =>{
-  //     this.setState({username: res.data.username?})
-  //   })
-  // }
+  componentDidMount(){
+    //toServer.getUser(url/cookie)
+  }
 
   render() {
     return (
@@ -40,3 +33,12 @@ class UserProfile extends Component {
 }
 
 export default UserProfile;
+
+
+
+/*
+export default function User() {
+
+}
+
+*/

@@ -10,10 +10,9 @@ const Habit = (props) => {
       <p><strong>Goal: </strong>{habitInfo.totalAmountsWanted} </p>
       <p><strong>Progress: </strong>{habitInfo.total} </p>
       <p>Did you {habitInfo.habit}?</p>
-      <button className='add_total' name={habitInfo.habitId} onClick={() => addTotal(habitInfo.habitId)} >yes</button>
-      <button className='delete_total' name={habitInfo.habitId} onClick={() => deleteTotal(habitInfo.habitId)}>no </button>
+      <button className='add_total' onClick={() => addTotal(habitInfo.habitId)} >yes</button>
+      <button className='delete_total' onClick={() => deleteTotal(habitInfo.habitId)}>no </button>
     </main>
-
   )
 }
 
