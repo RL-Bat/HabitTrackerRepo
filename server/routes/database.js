@@ -8,7 +8,7 @@ router.get("/", habitController.getUser, (req, res) => {
   res.status(200).json(res.locals.habitCards);
 });
 
-router.post("/addUser", habitController.addUser, (req, res) =>
+router.post("/checkUser", habitController.getUser, habitController.addUser, (req, res) =>
   res.status(200).json(res.locals.newUser)
 );
 

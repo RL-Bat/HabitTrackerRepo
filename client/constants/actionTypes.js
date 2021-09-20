@@ -1,6 +1,8 @@
 
 export const ADD_HABIT = "ADD_HABIT";
 
+export const DELETE_HABIT = "DELETE_HABIT";
+
 export const SET_NEW_HABIT = "SET_NEW_HABIT";
 
 export const SET_HABIT_TYPE = "SET_HABIT_TYPE";

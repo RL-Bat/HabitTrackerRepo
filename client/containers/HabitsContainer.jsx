@@ -13,9 +13,9 @@ const mapStateToProps = state => ({
 });
 
 //redux mapDispatchToProps here
-
 const mapDispatchToProps = dispatch => ({
   addHabit: (e) => dispatch(actions.addHabitActionCreator()),
+  deleteHabit: (habitId) => dispatch(actions.deleteHabitActionCreator(habitId)),
   setNewHabit: (e) => dispatch(actions.setNewHabitActionCreator(e.target.value)),
   setHabitType: (e) => dispatch(actions.setHabitTypeActionCreator(e.target.value)),
   setTotalAmountsWanted: (e) => dispatch(actions.setTotalAmountsWantedActionCreator(e.target.value)),
@@ -37,13 +37,13 @@ class HabitsContainer extends Component {
   }
 
   render() {
-    const { addHabit, setNewHabit, setHabitType, setTotalAmountsWanted, addTotal, deleteTotal, habitList} = this.props
+    const { addHabit, deleteHabit, setNewHabit, setHabitType, setTotalAmountsWanted, addTotal, deleteTotal, habitList} = this.props
     // destructure addHabit, +/- days, deleteHabit from this.props
     return(
       <div>
         <input id={'poopout'} type="button" value="Add Habit" className="addBtn" onClick={this.togglePopup} />
         {this.state.isOpen && <HabitCreator addHabit={addHabit} setNewHabit={setNewHabit} setHabitType={setHabitType} setTotalAmountsWanted={setTotalAmountsWanted} togglePopup={this.togglePopup}/>}
-        <HabitsDisplay habitList={habitList} addTotal={addTotal} deleteTotal={deleteTotal}/>
+        <HabitsDisplay habitList={habitList} deleteHabit={deleteHabit} addTotal={addTotal} deleteTotal={deleteTotal}/>
       </div>
     )
   };

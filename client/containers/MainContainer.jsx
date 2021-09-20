@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import PopUp from '../components/popUp.jsx';
+// import PopUp from '../components/popUp.jsx';
 import TimeClock from '../components/TimeClock.jsx';
 import UserProfile from  '../components/UserProfile.jsx'
 import '../styles/style.css';

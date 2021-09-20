@@ -6,6 +6,7 @@ const router = express.Router();
 //https://github.com/googleapis/google-api-nodejs-client#oauth2-client
 const { google } = require('googleapis');
 const queryString = require('query-string');
+const habitController = require('../controllers/habitController.js');
 
 //mongoose sheema
 const User = require('../models/habitModels');
@@ -113,25 +114,19 @@ googleController.getCredentials = async (req, res, next) => {
 async function checkUser(currentUser) {
   try {
     //check if user is currently in database
-    let user = await User.HabitsData.find({ userId: currentUser.user_id });
+    let user = await User.HabitsData.find({ user_id: currentUser.user_id });
     //if user is an empty array, user was not found so create new user and return user id
     if (Array.isArray(user) && user.length === 0) {
       //create new User query string out of passed in currentUser object
       //should be changed to /dashboard enpoint
-      const newUserQuery = `http://localhost:3000/dashboard?${queryString.stringify(
-        currentUser
-      )}`;
-      return newUserQuery;
-    } else {
-      //if user does exist return a query string with users id
-      //should be changed to /dashboard enpoint
-      const oldUserQuery = `http://localhost:3000/dashboard?${queryString.stringify(
-        currentUser.user_id
-      )}`;
-      return oldUserQuery;
+      const newUser = await User.HabitsData.create(currentUser);
+      console.log(newUser);
     }
+    //take user id and prepare query link for frontend to use
+    const userQuery = `http://localhost:3000/dashboard?user_id=${currentUser.user_id}`;
+    return userQuery;
   } catch (err) {
-    return err;
+    return { err: 'error occured in googelController.checkUser' };
   }
 }
 
