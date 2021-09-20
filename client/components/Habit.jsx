@@ -4,7 +4,7 @@ const Habit = (props) => {
   const {habitInfo ,addTotal, deleteTotal} = props;
 
   return (
-    <main>
+    <main className="habitCard">
       <p><strong>Habit: </strong>{habitInfo.habit} </p>
       <p><strong>Type: </strong>{habitInfo.type} </p>
       <p><strong>Goal: </strong>{habitInfo.totalAmountsWanted} </p>
