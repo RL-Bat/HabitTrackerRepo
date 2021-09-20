@@ -25,7 +25,7 @@ habitController.getUser = async (req, res, next) => {
     const _id = req.query._id;
     const user = await models.HabitsData.find({ _id });
     //res.locals.habitCards = user.habitCards;
-    res.locals.habitCards = user;
+    res.locals.user = user;
     return next();
   } catch (err) {
     return next({
@@ -44,6 +44,7 @@ habitController.addCard = async (req, res, next) => {
     user.habitCards.push(newObj);
     console.log("newObj", newObj, "user", user);
     await user.save();
+    return next()
   } catch (err) {
     return next({
       log: `error in habitController.addCard: ERROR = ${err}`,
@@ -61,6 +62,7 @@ habitController.deleteCard = async (req, res, next) => {
     user.habitCards = newArr;
     console.log(newObj, user);
     await user.save();
+    return next()
   } catch (err) {
     return next({
       log: `error in habitController.deleteCard: ERROR = ${err}`,
@@ -83,6 +85,7 @@ habitController.editRunningTotal = async (req, res, next) => {
       Number(newObj.updated) + user.habitCards[cardIndex].runningTotal;
     console.log(user.habitCards);
     await user.save();
+    return next()
   } catch (err) {
     return next({
       log: `error in habitController.editCard: ERROR = ${err}`,

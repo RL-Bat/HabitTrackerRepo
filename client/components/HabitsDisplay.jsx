@@ -17,7 +17,7 @@ const HabitsDisplay = (props) => {
   return(
     <div className='displayCard'>
       <h3>Habits</h3>
-      <div>
+      <div className="habitCardsContainer">
         {habitCards}
       </div>
     </div>
