@@ -3,7 +3,6 @@ import { render } from 'react-dom';
 import axios from 'axios';
 
 //this is a randomly generated quote pulled via a free API 
-// the 
 
 const Newquote = () => {
 
