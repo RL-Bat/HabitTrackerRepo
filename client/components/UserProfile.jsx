@@ -5,6 +5,7 @@ class UserProfile extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      userId: 21312322222, 
       user: 'Pikachu',
       profilePic: 'https://media.wired.com/photos/5f87340d114b38fa1f8339f9/master/w_1600%2Cc_limit/Ideas_Surprised_Pikachu_HD.jpg',
       /* user_id: this.props.user_id,
@@ -13,17 +14,19 @@ class UserProfile extends Component {
          */ 
     }
   }
+
   //=======Gets user data after login page, wg
-  // componentDidMount(){
-  //   
-  //   UrlSearchParams
-  //   const url = 'userdata'
-  //   fetch(url)
-  //   .then(res => res.json())
-  //   .then(res =>{
-  //     this.setState({username: res.data.username?})
-  //   })
-  // }
+  componentDidMount(){
+     const urlParams = window.location.search;
+     const urlUser = new URLSearchParams(urlParams)
+     const userId = urlUser.get('user_id')
+     console.log(userId);
+     const user = urlUser.get('email')
+     console.log(user);
+     console.log('test')
+    this.setState({user: user, userId: userId})
+    //toServer.getUser(url/cookie)
+  }
 
   render() {
     return (
@@ -40,3 +43,12 @@ class UserProfile extends Component {
 }
 
 export default UserProfile;
+
+
+
+/*
+export default function User() {
+
+}
+
+*/

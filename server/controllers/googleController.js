@@ -1,27 +1,27 @@
-const express = require("express");
+const express = require('express');
 const router = express.Router();
 
 //file dependancies
 //docs for google api library:
 //https://github.com/googleapis/google-api-nodejs-client#oauth2-client
-const { google } = require("googleapis");
-const queryString = require("query-string");
+const { google } = require('googleapis');
+const queryString = require('query-string');
 
 //mongoose sheema
-const User = require("../models/habitModels");
+const User = require('../models/habitModels');
 
 //required for decoding web tokens to object format & creating cookies
-const jwt = require("jsonwebtoken");
+const jwt = require('jsonwebtoken');
 
 //needed to create a secret for cookie on each login
-const randomString = require("random-string");
+const randomString = require('random-string');
 
 //You must create a .env file to store client ID, Client secret, and Redirect Uri follow .env file example
 
 //go to https://developers.google.com/adwords/api/docs/guides/authentication to find out how to create client id and client secret
 
 //required for reading .env file
-require("dotenv").config();
+require('dotenv').config();
 const CLIENT_ID = process.env.CLIENT_ID;
 const CLIENT_SECRET = process.env.CLIENT_SECRET;
 const REDIRECT_URI = process.env.REDIRECT_URI;
@@ -41,24 +41,24 @@ googleController.login = (req, res) => {
   //scopes needed for access to user data
   try {
     const scopes = [
-      "https://www.googleapis.com/auth/userinfo.profile",
-      "https://www.googleapis.com/auth/userinfo.email",
-      "https://www.googleapis.com/auth/calendar",
+      'https://www.googleapis.com/auth/userinfo.profile',
+      'https://www.googleapis.com/auth/userinfo.email',
+      'https://www.googleapis.com/auth/calendar',
     ];
 
     //generate url using Google Api library
     const url = oauth2Client.generateAuthUrl({
       // 'online' (default) or 'offline' (gets refresh_token)
-      access_type: "offline",
+      access_type: 'offline',
       scope: scopes,
-      response_type: "code",
+      response_type: 'code',
     });
     return res.redirect(url);
   } catch (err) {
     return res
       .sendStatus(404)
       .message(
-        "There was an error with your request to the server. Please try again"
+        'There was an error with your request to the server. Please try again'
       );
   }
 };
@@ -70,6 +70,7 @@ googleController.getCredentials = async (req, res, next) => {
     //get tokens using access code
     const { tokens } = await oauth2Client.getToken(code);
     //set credentials property on oauth2client object to recieved credential tokens
+
     oauth2Client.setCredentials(tokens);
     try {
       //decode JS web token and create an object
@@ -86,6 +87,7 @@ googleController.getCredentials = async (req, res, next) => {
         name,
         picture,
       };
+
       //create correct user query string to send to frontend for database request
       const databaseQuery = await checkUser(userObj);
 
@@ -93,7 +95,7 @@ googleController.getCredentials = async (req, res, next) => {
       //encrypted jwt to be used in cookie
       const token = jwt.sign(userObj, ENDCODED_SECRET);
 
-      res.cookie("token", token, { httpOnly: true });
+      res.cookie('token', token, { httpOnly: true });
       //redirect to databaseQuery string so front end can display data
 
       res.locals.redirectUrl = databaseQuery;
@@ -102,7 +104,7 @@ googleController.getCredentials = async (req, res, next) => {
   } catch (err) {
     next({
       log: `error in googleController.getCredentials: ERROR = ${err}`,
-      message: { err: "error occured in habitController.getCredentials" },
+      message: { err: 'error occured in habitController.getCredentials' },
     });
   }
 };

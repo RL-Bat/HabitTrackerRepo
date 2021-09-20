@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import Habit from './Habit.jsx'
+import axios from 'axios';
+import toServer from '../functions/functions.js';
 
 const HabitsDisplay = (props) => {
   const { habitList, addTotal, deleteTotal} = props;
@@ -7,7 +9,11 @@ const HabitsDisplay = (props) => {
   for (let i = 0; i < habitList.length; i++) {
     habitCards.push(<Habit key={i} habitInfo={habitList[i]} addTotal={addTotal} deleteTotal={deleteTotal}/>)
   }
-
+  /*
+  useEffect(() => {
+    toServer.getHabits(habitCards, url)
+  }, [habitCards])
+  */
   return(
     <div className='displayCard'>
       <h3>Habits</h3>

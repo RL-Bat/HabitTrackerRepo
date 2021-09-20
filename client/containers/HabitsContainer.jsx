@@ -19,8 +19,8 @@ const mapDispatchToProps = dispatch => ({
   setNewHabit: (e) => dispatch(actions.setNewHabitActionCreator(e.target.value)),
   setHabitType: (e) => dispatch(actions.setHabitTypeActionCreator(e.target.value)),
   setTotalAmountsWanted: (e) => dispatch(actions.setTotalAmountsWantedActionCreator(e.target.value)),
-  addTotal: () => dispatch(actions.addTotalActionCreator(habitId)),
-  deleteTotal: () => dispatch(actions.deleteTotalActionCreator(habitId)),
+  addTotal: (habitId) => dispatch(actions.addTotalActionCreator(habitId)),
+  deleteTotal: (habitId) => dispatch(actions.deleteTotalActionCreator(habitId)),
 });
 
 
