@@ -57,8 +57,8 @@ class UserProfile extends Component {
         <div id="username">
           {this.state.user}
           </div>
-        <div id="photograph">
-          <img id="pikachu" src={this.state.profilePic} alt='User profile picture'/>
+        <div id='picture'>
+          <img id={"pikachu"} src={this.state.profilePic} alt='User profile picture'/>
         </div> 
       </div>
     )
