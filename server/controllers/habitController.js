@@ -1,5 +1,5 @@
-const models = require('../models/habitModels');
-const { locals } = require('../server');
+const models = require("../models/habitModels");
+const { locals } = require("../server");
 
 const habitController = {};
 
@@ -14,7 +14,7 @@ habitController.addUser = async (req, res, next) => {
   } catch (err) {
     return next({
       log: `error in habitController.getUser: ERROR = ${err}`,
-      message: { err: 'error occured in habitController.getUser' },
+      message: { err: "error occured in habitController.getUser" },
     });
   }
 };
@@ -32,7 +32,7 @@ habitController.getUser = async (req, res, next) => {
   } catch (err) {
     return next({
       log: `error in habitController.getUser: ERROR = ${err}`,
-      message: { err: 'error occured in habitController.getUser' },
+      message: { err: "error occured in habitController.getUser" },
     });
   }
 };
@@ -44,13 +44,13 @@ habitController.addCard = async (req, res, next) => {
     // const _id = req.query.id;
     const user = await models.HabitsData.findOne({ user_id });
     user.habitCards.push(newObj);
-    console.log('newObj', newObj, 'user', user);
+    console.log("newObj", newObj, "user", user);
     await user.save();
     return next();
   } catch (err) {
     return next({
       log: `error in habitController.addCard: ERROR = ${err}`,
-      message: { err: 'error occured in habitController.addCard' },
+      message: { err: "error occured in habitController.addCard" },
     });
   }
 };
@@ -68,7 +68,7 @@ habitController.deleteCard = async (req, res, next) => {
   } catch (err) {
     return next({
       log: `error in habitController.deleteCard: ERROR = ${err}`,
-      message: { err: 'error occured in habitController.deleteCard' },
+      message: { err: "error occured in habitController.deleteCard" },
     });
   }
 };
@@ -91,7 +91,7 @@ habitController.editRunningTotal = async (req, res, next) => {
   } catch (err) {
     return next({
       log: `error in habitController.editCard: ERROR = ${err}`,
-      message: { err: 'error occured in habitController.editCard' },
+      message: { err: "error occured in habitController.editCard" },
     });
   }
 };
