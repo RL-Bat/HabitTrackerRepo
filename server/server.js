@@ -27,6 +27,7 @@ app.use('/database', databaseRouter);
 
 //send static webpack build bundle
 app.use('/build', express.static(path.join(__dirname, '../build')));
+app.use('/styles', express.static(path.join(__dirname, '../client/styles')));
 
 //for login requests
 app.use('/login', googleLoginRouter);
