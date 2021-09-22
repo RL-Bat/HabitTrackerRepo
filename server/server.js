@@ -7,6 +7,9 @@ const app = express();
 const googleLoginRouter = require('./routes/googleLogin.js');
 const databaseRouter = require('./routes/database.js');
 const dashboardRouter = require('./routes/dashboard');
+const interviewDashRouter = require('./routes/interviewDash');
+
+
 
 const PORT = 3000;
 // const cors = require("cors")
@@ -31,6 +34,9 @@ app.use('/login', googleLoginRouter);
 
 //for request to habit dashboard
 app.use('/dashboard', dashboardRouter);
+
+//for request to interview dashboard
+app.use('/interview', interviewDashRouter);
 
 //for requests to frontend home page
 app.get('/', (req, res) => {
