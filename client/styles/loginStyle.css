@@ -1,0 +1,71 @@
+
+body{
+    display: flex;
+    justify-content: center;
+    background-color: rgb(107, 107, 107);
+}
+
+.loginContainer{
+    color: rgb(110, 110, 110);
+    background-color: rgb(63, 63, 63);
+    width: 500px;
+    height: 500px;
+    border: 2px solid rgb(44, 44, 44);
+    border-radius: 50px;
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.title{
+    text-shadow: 3px 3px 0 rgb(34, 28, 28);
+}
+
+.loginButton {
+    text-decoration: none;
+    margin: 10px;
+    padding: 16px 2px 16px 2px;
+    text-align: center;
+    text-transform: uppercase;
+    transition: 0.5s;
+    background-size: 200% auto;
+    box-shadow: 0 0 20px #eee;
+    width: 250px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+    transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+    cursor: pointer;
+    border-radius: 50px;
+    height: 50px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    transition: 1s;
+    background-image: linear-gradient(to right, rgb(182, 35, 35) 5%, #ceff48 16.67%, rgb(56, 255, 99) 33.33%, rgb(36, 0, 194) 50%, rgb(56, 255, 99) 66.67%, #ceff48 83.33%,rgb(182, 35, 35) 95%)
+  }
+
+.loginButton:hover { 
+    transition: 1s;
+    background-position: right center; 
+}
+
+
+.innerButton{
+    /* opacity: 93%; */
+    background-color: rgb(110, 110, 110);
+    width: 240px;
+    height: 70px;
+    border-radius: 50px;
+    color: rgb(34, 28, 28);
+    font-family: "Arial Black", Gadget, sans-serif;
+    font-size: 17px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.innerButtonText{
+    display: flex;
+}
