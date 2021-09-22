@@ -53,10 +53,10 @@ body{
 
 
 .innerButton{
-    /* opacity: 93%; */
+    padding: 3px;
     background-color: rgb(110, 110, 110);
-    width: 240px;
-    height: 70px;
+    width: 234px;
+    height: 64px;
     border-radius: 50px;
     color: rgb(34, 28, 28);
     font-family: "Arial Black", Gadget, sans-serif;
@@ -68,4 +68,8 @@ body{
 
 .innerButtonText{
     display: flex;
+}
+
+.googleIcon{
+    margin-left: 10px;
 }
