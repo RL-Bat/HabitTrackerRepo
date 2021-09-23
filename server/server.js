@@ -9,6 +9,7 @@ const databaseRouter = require("./routes/database.js");
 const dashboardRouter = require("./routes/dashboard");
 const interviewRouter = require("./routes/interviewRoutes");
 
+
 const PORT = 3000;
 // const cors = require("cors")
 
@@ -39,6 +40,7 @@ app.use("/database", databaseRouter);
 app.use("/build", express.static(path.join(__dirname, "../build")));
 app.use("/styles", express.static(path.join(__dirname, "../client/styles")));
 
+
 //for login requests
 app.use("/login", googleLoginRouter);
 
@@ -48,10 +50,19 @@ app.use("/dashboard", dashboardRouter);
 //for request to interview dashboard
 app.use("/interview", interviewRouter);
 
+//for request to interview dashboard
+app.use('/interview', interviewDashRouter);
+
 //for requests to frontend home page
 app.get("/", (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, "../client/login.html"));
 });
+
+//testing purposes
+app.get('/test', async (req, res) => {
+  res.json({ message: 'pass!' });
+});
+
 
 //global error handler setup
 app.use((err, req, res, next) => {
