@@ -43,6 +43,12 @@ app.get('/', (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, '../client/login.html'));
 });
 
+//testing purposes
+app.get('/test', async (req, res) => {
+  res.json({ message: 'pass!' });
+});
+
+
 //global error handler setup
 app.use((err, req, res, next) => {
   const defaultErr = {
