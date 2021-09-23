@@ -22,6 +22,6 @@ const interviewSchema = new mongoose.Schema({
   interview_state: { type: String, required: true },
 });
 
-const Interview = mongoose.model('interviews', interviewSchema);
+//const Interview = mongoose.model('interview', interviewSchema);
 
-module.exports = { Interview };
+module.exports = mongoose.model('interview', interviewSchema);
