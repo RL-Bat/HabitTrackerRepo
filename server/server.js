@@ -48,6 +48,9 @@ app.use("/dashboard", dashboardRouter);
 //for request to interview dashboard
 app.use("/interview", interviewRouter);
 
+//for request to interview dashboard
+// app.use("/interview", interviewDashRouter);
+
 //for requests to frontend home page
 app.get("/", (req, res) => {
   return res.status(200).sendFile(path.join(__dirname, "../client/login.html"));

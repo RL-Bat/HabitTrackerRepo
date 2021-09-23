@@ -1,5 +1,5 @@
 const express = require("express");
-const { interview_get } = require("../controllers/interviewController");
+// const { interview_get } = require("../controllers/interviewController");
 const interviewController = require("../controllers/interviewController");
 const router = express.Router();
 
@@ -15,7 +15,7 @@ router.delete("/delete", interviewController.interview_delete, (req, res) =>
   res.status(200).send("user deleted")
 );
 
-router.get("/update", interviewController.interview_update, (req, res) => {
+router.put("/update", interviewController.interview_update, (req, res) => {
   res.status(200).send("user updated");
 });
 

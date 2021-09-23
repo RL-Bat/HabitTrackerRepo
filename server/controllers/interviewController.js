@@ -52,6 +52,18 @@ trackerController.interview_delete = async (req, res, next) => {
   }
 };
 
-trackerController.interview_update = async (req, res, next) => {};
+trackerController.interview_update = async (req, res, next) => {
+  // try {
+  //   console.log("test");
+  //   const newObj = req.query;
+  //   const user = await Interview.findOne({ newObj });
+  //   console.log(user);
+  // } catch (err) {
+  //   return next({
+  //     log: `error in interview.update: ERROR = ${err}`,
+  //     message: { err: "error occured in interview_update" },
+  //   });
+  // }
+};
 
 module.exports = trackerController;
