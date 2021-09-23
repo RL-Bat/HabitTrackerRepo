@@ -2,15 +2,27 @@
 const express = require("express");
 const path = require("path");
 const app = express();
-
+const mongoose = require("mongoose");
 //routers
 const googleLoginRouter = require("./routes/googleLogin.js");
 const databaseRouter = require("./routes/database.js");
 const dashboardRouter = require("./routes/dashboard");
-const interviewDashRouter = require("./routes/interviewDash");
+const interviewRouter = require("./routes/interviewRoutes");
 
 const PORT = 3000;
 // const cors = require("cors")
+
+const MONGO_URI =
+  "mongodb+srv://ChaoY:Codesmith@cluster0.zjvee.mongodb.net/tracker?retryWrites=true&w=majority";
+
+mongoose
+  .connect(MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+    dbName: "tracker",
+  })
+  .then(() => console.log("Connected to the tracker database!"))
+  .catch((error) => console.log(`Error connecting to database, ${error}`));
 
 //cookie parser that will be used to persist user sessions
 const cookieParser = require("cookie-parser");
@@ -34,7 +46,7 @@ app.use("/login", googleLoginRouter);
 app.use("/dashboard", dashboardRouter);
 
 //for request to interview dashboard
-app.use("/interview", interviewDashRouter);
+app.use("/interview", interviewRouter);
 
 //for requests to frontend home page
 app.get("/", (req, res) => {
