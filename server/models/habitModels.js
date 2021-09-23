@@ -1,16 +1,19 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
-const MONGO_URI =
-  'mongodb+srv://ChaoY:Codesmith@cluster0.zjvee.mongodb.net/tracker?retryWrites=true&w=majority';
 
-mongoose
-  .connect(MONGO_URI, {
-    useNewUrlParser: true,
-    useUnifiedTopology: true,
-    dbName: 'habitApp',
-  })
-  .then(() => console.log('Connected to Mongo DB. GG.'))
-  .catch((err) => console.log(err));
+// const MONGO_URI =
+//   'mongodb+srv://moonluck:mishra@cluster0.enckb.mongodb.net/habitApp?retryWrites=true&w=majority';
+
+
+
+// mongoose
+//   .connect(MONGO_URI, {
+//     useNewUrlParser: true,
+//     useUnifiedTopology: true,
+//     dbName: 'habitApp',
+//   })
+//   .then(() => console.log('Connected to Mongo DB. GG.'))
+//   .catch((err) => console.log(err));
 
 const Schema = mongoose.Schema;
 
@@ -35,6 +38,6 @@ const habitSchema = new Schema({
   ],
 });
 
-const HabitsData = mongoose.model('habitcards', habitSchema);
+const HabitsData = mongoose.model("habitcards", habitSchema);
 
 module.exports = { HabitsData };
