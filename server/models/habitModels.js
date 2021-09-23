@@ -1,7 +1,10 @@
 const mongoose = require("mongoose");
 
+
 // const MONGO_URI =
 //   'mongodb+srv://moonluck:mishra@cluster0.enckb.mongodb.net/habitApp?retryWrites=true&w=majority';
+
+
 
 // mongoose
 //   .connect(MONGO_URI, {
