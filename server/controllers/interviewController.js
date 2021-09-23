@@ -22,11 +22,11 @@ trackerController.interview_add = async (req, res, next) => {
 
 trackerController.interview_get = async (req, res, next) => {
   try {
-    console.log("blatblatblat");
+    // console.log("blatblatblat");
     const { user_id } = req.query;
-    console.log(user_id);
+    // console.log(user_id);
     const user = await Interview.find({ user_id });
-    console.log(user);
+    // console.log(user);
     res.locals.user = user;
     return next();
   } catch (err) {
@@ -51,5 +51,7 @@ trackerController.interview_delete = async (req, res, next) => {
     });
   }
 };
+
+trackerController.interview_update = async (req, res, next) => {};
 
 module.exports = trackerController;

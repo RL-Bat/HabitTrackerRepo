@@ -1,4 +1,5 @@
 const express = require("express");
+const { interview_get } = require("../controllers/interviewController");
 const interviewController = require("../controllers/interviewController");
 const router = express.Router();
 
@@ -13,5 +14,9 @@ router.post("/add", interviewController.interview_add, (req, res) =>
 router.delete("/delete", interviewController.interview_delete, (req, res) =>
   res.status(200).send("user deleted")
 );
+
+router.get("/update", interviewController.interview_update, (req, res) => {
+  res.status(200).send("user updated");
+});
 
 module.exports = router;
