@@ -13,7 +13,8 @@ mongoose
   .catch((error) => console.log(`Error connecting to database, ${error}`));
 
 const interviewSchema = new mongoose.Schema({
-  user_id: { type: Number, required },
+  user_id: { type: Number, required:true },
+  interview_id: { type: Number, required: true },
   company_name: { type: String, required: true },
   engineering_position: { type: String, required: true },
   interview_date: { type: Date, required: true },

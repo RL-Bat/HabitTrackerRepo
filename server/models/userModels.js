@@ -15,7 +15,8 @@ mongoose
 const userSchema = new mongoose.Schema({
   user_id: { type: Number, required },
   user_name: { type: String, required: true },
-  password: { type: String, required: true },
+  user_email: { type: String, required: true },
+  password: { type: String },
 });
 
 const User = mongoose.model('users', userSchema);
