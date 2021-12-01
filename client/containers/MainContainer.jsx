@@ -18,11 +18,13 @@ const mapDispatchToProps = dispatch => ({
   updateHabitList: (update) => dispatch(actions.updateListActionCreator(update))
 });
 
+
+
 class MainContainer extends Component {
   constructor(props) {
     super(props);
   }
-
+//call to DB for user info here...
   render() {
   
     return(
